@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
 #Update megabotrc location and variables with your configuration
 megabotrc="./megabotrc"
 if [ -f ${megabotrc} ]; then
@@ -9,6 +11,7 @@ else
 	exit 1
 fi
 
+#Set initial variables to null
 upload=
 getinfo=
 slack=
