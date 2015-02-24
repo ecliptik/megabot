@@ -3,7 +3,7 @@
 #Update megabotrc location and variables with your configuration
 megabotrc="./megabotrc"
 if [ -f ${megabotrc} ]; then
-	source ./megabotrc
+	source ${megabotrc}
 else
 	echo "Unable to find megabotrc file: ${megabotrc}!"
 	exit 1
