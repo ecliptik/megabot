@@ -1,0 +1,6 @@
+#Fill in your own variables here
+megaprefix="/Root/megabot"
+channel="#megabot"
+botname="megabot"
+emoji=":megabot:"
+webhook="https://hooks.slack.com/services/YOURKEYHERE"
