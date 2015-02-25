@@ -12,6 +12,7 @@ else
 fi
 
 #Set initial variables to null
+file=
 upload=
 getinfo=
 slack=
@@ -39,9 +40,9 @@ EOF
 #Get file URL and information
 get_info()
 {
-	megafileinfo=`megals -hle 2>/dev/null | grep ${megaprefix}/${file}`
-	megaurl=`echo ${megafileinfo} | awk {'print $1'}`
-	megafilesize=`echo ${megafileinfo} | awk {'print $5" "$6'}`
+	megafileinfo=$(megals -hle 2>/dev/null | grep "${megaprefix}/${file}")
+	megaurl=$(echo ${megafileinfo} | awk {'print $1'})
+	megafilesize=$(echo ${megafileinfo} | awk {'print $5" "$6'})
 	info="${file} ${megafilesize}\n${megaurl}"
 }
 
@@ -49,13 +50,13 @@ get_info()
 upload_file()
 {
 	#Make sure the file exists before trying to upload
-	if [ ! -f ${file} ]; then
+	if [ ! -f "${file}" ]; then
 		echo "File: ${file} does not seem to exist!"
 		exit 1
 	fi
 
 	#Check if the file is already uploaded
-	if megals --reload ${megaprefix} 2>/dev/null | grep ${megaprefix}/${file} >/dev/null; then
+	if megals --reload ${megaprefix} 2>/dev/null | grep "${megaprefix}/${file}" >/dev/null; then
 		echo "File ${megaprefix}/${file} already exists!"
 		exit 1
 	fi
@@ -122,11 +123,6 @@ while getopts "hf:gusqa" OPTION; do
 		;;
 	esac
 done
-
-if [ -z ${file} ]; then
-	usage
-	exit 1
-fi
 
 #Upload file and display output
 if [ ${upload} ]; then
