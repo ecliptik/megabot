@@ -54,10 +54,16 @@ EOF
 #Get file URL and information
 get_info()
 {
-	megafileinfo=$(megals -hle 2>/dev/null | grep "${megaprefix}/${file}")
-	megaurl=$(echo ${megafileinfo} | awk {'print $1'})
-	megafilesize=$(echo ${megafileinfo} | awk {'print $5" "$6'})
-	info="${file} ${megafilesize}\n${megaurl}"
+    #Check the file in Mega and build info
+	if megals --reload ${megaprefix} 2>/dev/null | grep "${megaprefix}/${file}" >/dev/null; then
+	    megafileinfo=$(megals --reload -hle 2>/dev/null | grep "${megaprefix}/${file}")
+	    megaurl=$(echo ${megafileinfo} | awk {'print $1'})
+	    megafilesize=$(echo ${megafileinfo} | awk {'print $5" "$6'})
+	    info="${file} ${megafilesize}\n${megaurl}"
+    else
+        echo "File ${file} does not seem to exist in Mega!"
+        exit 1
+	fi
 }
 
 #Upload to Mega
