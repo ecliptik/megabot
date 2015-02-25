@@ -56,13 +56,13 @@ get_info()
 {
     #Check the file in Mega and build info
 	if megals --reload ${megaprefix} 2>/dev/null | grep "${megaprefix}/${file}" >/dev/null; then
-	    megafileinfo=$(megals --reload -hle 2>/dev/null | grep "${megaprefix}/${file}")
-	    megaurl=$(echo ${megafileinfo} | awk {'print $1'})
-	    megafilesize=$(echo ${megafileinfo} | awk {'print $5" "$6'})
-	    info="${file} ${megafilesize}\n${megaurl}"
-    else
-        echo "File ${file} does not seem to exist in Mega!"
-        exit 1
+		megafileinfo=$(megals --reload -hle 2>/dev/null | grep "${megaprefix}/${file}")
+		megaurl=$(echo ${megafileinfo} | awk {'print $1'})
+		megafilesize=$(echo ${megafileinfo} | awk {'print $5" "$6'})
+		info="${file} ${megafilesize}\n${megaurl}"
+	else
+		echo "File ${file} does not seem to exist in Mega!"
+		exit 1
 	fi
 }
 
@@ -154,7 +154,7 @@ if [ ${upload} ]; then
 	upload_file
 fi
 
-#Get existing file on mega information displayt output
+#Get existing file on Mega information display output
 if [ ${getinfo} ]; then
 	#Get file infomation
 	get_info

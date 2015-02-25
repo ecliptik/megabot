@@ -19,8 +19,8 @@ Megabot is fairly simple with only a few dependencies:
 To Install:
 
 1. Install and configure dependencies
-2. Modify megabotrc and copy to desired location (eg ~/.megabotrc)
-3. Place megabot.sh somewhere in your path and chmod +x (eg ~/bin)
+2. Modify megabotrc and copy to desired location (eg ${HOME}/.megabotrc)
+3. Place megabot.sh somewhere in your path and chmod +x (eg ${HOME}/bin)
 4. Run megabot.sh with desired options and required filename
 
 ### Running megabot.sh
@@ -35,7 +35,7 @@ You'll see output on upload progress:
     tokyo.wmv: 92% - 10.2 MiB of 11.2 Mib
     Uploaded tokyo.wmv
 
-You can get information on the file:
+You can get information on on a file in Mega:
 
     % megabot.sh -g -f tokyo.wmv
 
@@ -49,7 +49,7 @@ You can send file information to Slack:
 
     % megabot.sh -s -f tokyo.wmv
 
-You'll see output of the Slack curl command to post to a webhook:
+You'll see output of the curl command to post to a Slack webhook:
 
     Slack command: eval curl -X POST --data-urlencode 'payload={"channel": "#megabot", "username": "megabot", "text": "tokyo.wmv 11.2 MiB\nhttps://mega.co.nz/#!YRtD0DoI!iFFsJMze-DHLb343VZ1LMqvqsVF65vbG8LwzYyE98rg", "icon_emoji": ":megabot:"}' https://hooks.slack.com/services/YOURKEYHERE  >/dev/null 2>&1
 
