@@ -54,7 +54,7 @@ EOF
 #Get file URL and information
 get_info()
 {
-    #Check the file in Mega and build info
+	#Check the file in Mega and build info
 	if megals --reload ${megaprefix} 2>/dev/null | grep "${megaprefix}/${file}" >/dev/null; then
 		megafileinfo=$(megals --reload -hle 2>/dev/null | grep "${megaprefix}/${file}")
 		megaurl=$(echo ${megafileinfo} | awk {'print $1'})
