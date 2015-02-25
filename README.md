@@ -1,10 +1,11 @@
 # megabot.sh
 megabot.sh is a command line tool for Linux systems that uses [Megatools][megatools] to upload files, get information on them from [Mega][mega], and emit messages to a [Slack][slack] channel.
- 
+
 [megatools]: https://github.com/megous/megatools
 [mega]: https://mega.co.nz
 [slack]: https://www.slack.com/
 [webhooks]: https://api.slack.com/incoming-webhooks
+[curl]: http://curl.haxx.se/
 
 ### Setting up megabot.sh
 
@@ -12,7 +13,8 @@ Megabot is fairly simple with only a few dependencies:
 
 1. [Mega][mega] account
 2. [Megatools][megatools]
-3. [Slack][slack] [Incoming Webhooks][webhooks]
+3. [Curl][curl]
+4. [Slack][slack] [Incoming Webhooks][webhooks]
 
 To Install:
 
